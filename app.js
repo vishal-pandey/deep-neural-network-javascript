@@ -13,6 +13,8 @@ window.onload = async function () {
 
     fillBoard(weights, bias);
 
+    document.querySelector(".loading").style.display = "none";
+
     document.querySelector(".reset").addEventListener("click", function () {
         data = Array.from({ length: 784 }, () => 0);
         document.querySelector(".output").innerHTML = "";
