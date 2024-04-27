@@ -1,6 +1,8 @@
 ## Deep Neral Network
 ---
 
+Here I have implemented the Deep Neural Network from scratch without using any library in plain old javascript.  
+  
 The calculation is inspired by the 3Blue1Brown's video <a href="https://www.youtube.com/watch?v=tIeHLnjs5U8">Backpropagation calculus | Chapter 4, Deep learning</a>
   
   
