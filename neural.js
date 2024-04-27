@@ -15,75 +15,30 @@ var actual = [];
 var activations = [];
 var sigmoid_derivatives = [];
 const inputSize = 784;
-
 const layers = [128, 64, 10];
-
 const epochs = 5;
-
-console.log(data[0]);
-// console.log(data[0].label);
 
 // labels
 const labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-// layers
-
-// input layer 784
-
-// hidden layer 1 16
-// weights[0] = getWeights(784, 16);
-// bias[0] = getBias(16);
-
-// // hidden layer 2 16
-// weights[1] = getWeights(16, 16);
-// bias[1] = getBias(16);
-
-// // output layer 10
-// weights[2] = getWeights(16, 10);
-// bias[2] = getBias(10);
+[weights, bias] = getWeightsAndBias(inputSize, layers);
 
 
-[weights, bias] = getWeightsAndBias(784, layers);
-
-
-
-
-// [activations, sigmoid_derivatives, output, actual] = forwardPropagation(data[0], weights, bias);
-// backPropagation(data[0].image, weights, bias, activations, sigmoid_derivatives, actual);
-
-
-
+// Training of the model
 for (let i = 0; i < epochs; i++) {
     console.log("Epoch: ", i);
     train(data, weights, bias);
     console.log(test(data_test, weights, bias), "accuracy");
 }
 
-
+// write weights and bias to file
 writeToFile(weights, bias);
 
 
-
-// console.log(data[0].image);
-// [activations[0], sigmoid_derivatives[0]] = getOutput(data[0].image, weights[0], bias[0]);
-// [activations[1], sigmoid_derivatives[1]] = getOutput(activations[0], weights[1], bias[1]);
-// [activations[2], sigmoid_derivatives[2]] = getOutput(activations[1], weights[2], bias[2]);
-
-// const output = activations[layers.length - 1];
-// const actual = oneHotEncoding(data[0].label);
-
-// console.log(output, actual, "cost: ", costFunction(output, actual));
-// console.log(activations_1, sigmoid_derivatives_1);
-
-// console.log(costFunction(output, actual));
-// console.log(actual - output);
-
-
-
-
+// ----------------------------------------------
+// Functions are below
+// ----------------------------------------------
 
 // train
-
 function train(data, weights, bias) {
     for (let i = 0; i < data.length; i++) {
         // console.log(i);
@@ -106,17 +61,6 @@ function test(data, weights, bias) {
     }
     return correct / data.length;
 }
-
-
-// console.log(test(data_test, weights, bias), "accuracy");
-
-// var a, s, o, a;
-
-// [a, s, o, a] = forwardPropagation(data_test[0], weights, bias);
-
-// console.log(o, a, "cost: ", costFunction(o, a));
-
-
 
 // back propagation
 function backPropagation(data, weights, bias, activations, sigmoid_derivatives, actual) {
@@ -148,62 +92,13 @@ function backPropagation(data, weights, bias, activations, sigmoid_derivatives, 
         weights[i] = updated_weights;
         bias[i] = updated_bias;
     }
-
-    // const al = activations[2];
-    // const al1 = activations[1]
-
-    // const dzl_dwl  = al1
-    // const dal_dzl = sigmoid_derivatives[2]
-
-
-    // const dC_dal = multiplyArrayStatic( 2 , differenceArray(al, actual))
-
-    // const dC_dbl = multiplyArrayDynamic( dal_dzl , dC_dal )
-
-    // const dC_dwl = dotProduct( dzl_dwl , dC_dbl )
-
-    // // dzl_dwl * multiplyArrayDynamic( dal_dzl , dC_dal )
-
-    // const updated_weights = updateWeights(weights[2], dC_dwl)
-    // const updated_bias = updateBias(bias[2], dC_dbl)
-
-    // weights[2] = updated_weights
-    // bias[2] = updated_bias
-    
 }
 
-
-// const al = activations[2];
-// const al1 = activations[1]
-
-// const dzl_dwl  = al1
-// const dal_dzl = sigmoid_derivatives[2]
-
-
-// const dC_dal = multiplyArrayStatic( 2 , differenceArray(al, actual))
-
-// const dC_dbl = multiplyArrayDynamic( dal_dzl , dC_dal )
-
-// const dC_dwl = dotProduct( dzl_dwl , dC_dbl )
-
-// // dzl_dwl * multiplyArrayDynamic( dal_dzl , dC_dal )
-
-// const updated_weights = updateWeights(weights[2], dC_dwl)
-// const updated_bias = updateBias(bias[2], dC_dbl)
-
-// weights[2] = updated_weights
-// bias[2] = updated_bias
-
-// console.log(x, y, "weights and bias updated")
-
-// console.log(dC_dwl)
-
-
+// Sigmoid function
 function sigmoid(x) { 
     return 1 / (1 + Math.exp(-x)) 
 }
 
-// Functions are below
 // get weights based on input and  size of layer
 function getWeights(input, size) {
     let x = [];
