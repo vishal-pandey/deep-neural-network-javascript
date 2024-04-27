@@ -40,8 +40,8 @@ var actual = [];
 var activations = [];
 var sigmoid_derivatives = [];
 const inputSize = 784;
-const layers = [512, 512, 128, 128, 10];
-const epochs = 1;
+const layers = [16, 16, 10];
+const epochs = 5;
 
 // labels
 const labels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];

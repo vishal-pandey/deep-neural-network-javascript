@@ -54,3 +54,21 @@ Since this whole algorithm is implemented in pure javascript, I have made an Fro
 <a href="https://neural-network.vishalpandey.co.in/">Link of the application</a>
 
 <a href="https://neural-network.vishalpandey.co.in/"><img src="./images/app_screenshot.png" width="500px"></a>
+  
+  
+## Instruction to train the model locally
+  
+
+```
+git clone https://github.com/vishal-pandey/deep-neural-network-javascript.git
+cd deep-neural-network-javascript
+node neural.js
+```
+
+You can update the hyper parameters in neural.js file
+```
+const layers = [16, 16, 10];
+const epochs = 5;
+```
+
+Weights and biases will be saved in weights.json file, which in turn are read by the frontend application to make the prediction.
