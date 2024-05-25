@@ -127,6 +127,13 @@ body{
     animation: spin1 1s linear infinite;
 }
 
+.header h1{
+    text-align: center;
+}
+.header h1 small{
+    font-weight: 200;
+    font-size: 13px;
+}
 
 @keyframes spin {
     0% {
